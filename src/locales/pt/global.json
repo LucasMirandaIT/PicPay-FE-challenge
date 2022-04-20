@@ -1,0 +1,25 @@
+{
+  "welcomeText": "Bem vindo de volta",
+  "emailLabel": "Email",
+  "passwordLabel": "Senha",
+  "loginButtonLabel": "Entrar",
+  "myPayments": {
+    "pageTitle": "Meus Pagamentos",
+    "addButtonLabel": "Adicionar Pagamento",
+    
+    "nameLabel": "Nome",
+    "usernameLabel": "Usuário",
+    "titleLabel": "Título",
+    "dateLabel": "Data",
+    "valueLabel": "Valor",
+    "paidLabel": "Pago",
+    "actionsLabel": "Ações"
+  },
+  "cancelButtonLabel": "Cancelar",
+  "confirmButtonLabel": "Confirmar",
+  "saveButtonLabel": "Salvar",
+
+  "addPaymentPageTitle": "Adicionar Pagamento",
+  "removePaymentPageTitle": "Excluir Pagamento",
+  "logoutLabel": "Fazer logout"
+}

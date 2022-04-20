@@ -1,74 +1,13 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "name": "Pennie Dumphries",
-      "username": "pdumphries0",
-      "title": "Dental Hygienist",
-      "value": 19.96,
-      "date": "2020-07-21T05:53:20Z",
-      "image": "https://robohash.org/asperioresprovidentconsequuntur.png?size=150x150&set=set1",
-      "isPaid": true
-    },
-    {
-      "id": 2,
-      "name": "Foster Orthmann",
-      "username": "forthmann1",
-      "title": "Professor",
-      "value": 207.36,
-      "date": "2021-01-28T14:01:29Z",
-      "image": "https://robohash.org/quasetqui.png?size=150x150&set=set1",
-      "isPaid": false
-    },
-    {
-      "id": 3,
-      "name": "Crissie Summerill",
-      "username": "csummerill2",
-      "title": "VP Product Management",
-      "value": 464.54,
-      "date": "2020-02-09T18:20:32Z",
-      "image": "https://robohash.org/natusinciduntsapiente.png?size=150x150&set=set1",
-      "isPaid": true
-    },
-    {
-      "id": 4,
-      "name": "Letitia Crolly",
-      "username": "lcrolly3",
-      "title": "Web Developer I",
-      "value": 183.58,
-      "date": "2021-07-10T20:39:48Z",
-      "image": "https://robohash.org/estveniamet.png?size=150x150&set=set1",
-      "isPaid": false
-    },
-    {
-      "id": 5,
-      "name": "Anthea Pundy",
-      "username": "apundy4",
-      "title": "Software Engineer III",
-      "value": 177.19,
-      "date": "2021-01-01T14:09:51Z",
-      "image": "https://robohash.org/quiaautomnis.png?size=150x150&set=set1",
-      "isPaid": true
-    },
-    {
-      "id": 6,
-      "name": "Hurleigh Malitrott",
-      "username": "hmalitrott5",
-      "title": "Developer IV",
-      "value": 43.62,
-      "date": "2020-09-19T00:11:00Z",
-      "image": "https://robohash.org/impeditconsequuntureveniet.png?size=150x150&set=set1",
-      "isPaid": true
-    },
-    {
       "id": 7,
       "name": "Lonna Bonney",
       "username": "lbonney6",
-      "title": "Assistant Media Planner",
-      "value": 285.86,
+      "title": "Media Planner Jr",
+      "value": "2885.86",
       "date": "2020-10-02T23:04:57Z",
-      "image": "https://robohash.org/estquisquamquaerat.png?size=150x150&set=set1",
-      "isPaid": false
+      "isPaid": true
     },
     {
       "id": 8,
@@ -88,7 +27,7 @@
       "value": 175.59,
       "date": "2021-05-12T05:17:48Z",
       "image": "https://robohash.org/quismaximefuga.png?size=150x150&set=set1",
-      "isPaid": true
+      "isPaid": false
     },
     {
       "id": 10,
@@ -98,7 +37,7 @@
       "value": 423.64,
       "date": "2020-06-04T18:45:29Z",
       "image": "https://robohash.org/possimusautemnecessitatibus.png?size=150x150&set=set1",
-      "isPaid": false
+      "isPaid": true
     },
     {
       "id": 11,
@@ -108,7 +47,7 @@
       "value": 427.95,
       "date": "2020-09-12T13:20:55Z",
       "image": "https://robohash.org/omniseasapiente.png?size=150x150&set=set1",
-      "isPaid": true
+      "isPaid": false
     },
     {
       "id": 12,
@@ -1699,6 +1638,13 @@
       "date": "2021-05-05T10:22:13Z",
       "image": "https://robohash.org/illumexpeditadeleniti.png?size=150x150&set=set1",
       "isPaid": true
+    },
+    {
+      "username": "mikediaz23",
+      "title": "Intern",
+      "value": "123.45",
+      "id": 171,
+      "name": "Mike Diaz"
     }
   ],
   "account": [

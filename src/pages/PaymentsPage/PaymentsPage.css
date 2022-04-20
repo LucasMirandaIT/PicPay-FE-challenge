@@ -1,0 +1,22 @@
+.pageContent {
+  background-color: white;
+  border-radius: 8px;
+}
+.payments-table {
+  width: 100%;
+}
+.payments-table > thead > tr {
+    border-bottom: 2px solid #CFDCE5;
+    height: 50px;
+}
+.payments-table > tbody > tr > td {
+  border: none;
+}
+.payments-table > tbody > tr:nth-child(even) {
+  background: #f5f8fa;
+}
+
+.add-button {
+  background: #007DFE;
+  height: 36px;
+}

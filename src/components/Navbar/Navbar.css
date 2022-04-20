@@ -1,0 +1,16 @@
+.sidebar-container {
+  background-color: #002d69;
+  padding: 22px 30px;
+}
+
+.side-bar {
+  width: 100%;
+  height: 46px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.userName {
+  text-transform: capitalize;
+}

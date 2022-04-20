@@ -5,3 +5,8 @@
 
 # testing
 /coverage
+
+# misc
+.DS_Store
+*.lock
+*-lock.*

@@ -1,0 +1,17 @@
+.pageBody-container {
+    margin: 65px 48px 20px;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header > .title {
+    font-size: 36px;
+    line-height: 43px;
+    font-weight: 600;
+}
+
+.content {
+    margin-top: 35px;
+}
