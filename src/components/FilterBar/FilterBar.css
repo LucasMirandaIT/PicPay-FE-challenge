@@ -1,0 +1,33 @@
+@import url("https://cdn.syncfusion.com/ej2/material.css");
+
+.filterbar-container.collapsed {
+  height: 40px;
+  transition: 1s height;
+}
+.filterbar-container {
+  height: 150px;
+  transition: 1s height;
+  overflow: hidden;
+  padding: 15px 10px;
+}
+
+.filters-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.filter-container {
+  width: 23%;
+  margin: 15px 0;
+}
+
+.tune-icon {
+  transform: rotate(90deg);
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

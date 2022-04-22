@@ -10,6 +10,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  TableSortLabel,
 } from "@mui/material";
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
@@ -22,6 +23,9 @@ import AddPayment from "../../modals/AddPayment/AddPayment";
 import { DeleteOutlined, EditOutlined } from "@mui/icons-material";
 import RemovePayment from "../../modals/RemovePayment/RemovePayment";
 import { useTranslation } from "react-i18next";
+import TablePagination from "../../components/TablePagination/TablePagination";
+import FilterBar from "../../components/FilterBar/FilterBar";
+import { toast } from "react-toastify";
 
 const style = {
   position: "absolute",
@@ -37,6 +41,15 @@ const style = {
 
 const PaymentsPage = () => {
   const [payments, setPayments] = useState([]);
+  const [page, setPage] = useState(1);
+  const [totalCount, setTotalCount] = useState(1);
+
+  const [itemsLimit, setItemsLimit] = useState(10);
+
+  const [filtersActive, setFiltersActive] = useState({});
+
+  const [order, setOrder] = useState("asc");
+  const [orderBy, setOrderBy] = useState("username");
 
   const [modalOptions, setModalOptions] = useState({
     visible: false,
@@ -46,14 +59,63 @@ const PaymentsPage = () => {
 
   const { t } = useTranslation();
 
-  const fetchPayments = () => {
-    axios.get("/tasks").then(({ data }) => {
-      setPayments(data);
-    });
+  const paymentsTableHeader = [
+    {
+      id: "username",
+      title: t("global:myPayments:usernameLabel"),
+      sortable: true,
+      align: "left",
+    },
+    {
+      id: "title",
+      title: t("global:myPayments:titleLabel"),
+      sortable: true,
+      align: "right",
+    },
+    {
+      id: "date",
+      title: t("global:myPayments:dateLabel"),
+      sortable: true,
+      align: "right",
+    },
+    {
+      id: "value",
+      title: t("global:myPayments:valueLabel"),
+      sortable: true,
+      align: "right",
+    },
+    {
+      id: "paid",
+      title: t("global:myPayments:paidLabel"),
+      sortable: false,
+      align: "right",
+    },
+    {
+      id: "actions",
+      title: t("global:myPayments:actionsLabel"),
+      sortable: false,
+      align: "right",
+    },
+  ];
+
+  const fetchPayments = (currentPage) => {
+    axios
+      .get(
+        `/tasks?_page=${currentPage}&_limit=${itemsLimit}${
+          filtersActive ? filtersActive : ""
+        }&_sort=${orderBy}&_order=${order}`
+      )
+      .then(({ data, headers }) => {
+        setPayments(data);
+        setTotalCount(headers["x-total-count"]);
+      })
+      .catch((err) => {
+        toast(err);
+      });
   };
 
   useEffect(() => {
-    fetchPayments();
+    fetchPayments(page);
   }, []);
 
   const handleAddModal = (data = {}) => {
@@ -114,7 +176,7 @@ const PaymentsPage = () => {
           fetchPayments();
         })
         .catch((err) => {
-          console.error("err ::: ", err);
+          toast(err);
         });
     };
 
@@ -137,12 +199,44 @@ const PaymentsPage = () => {
     []
   );
 
+  const handleSearchFilter = (event) => {
+    let filtersQuery =
+      "&" +
+      Object.entries(event)
+        .map((item) => item.join("="))
+        .join("&");
+    setFiltersActive(filtersQuery);
+    fetchPayments(1);
+  };
+
+  const handlePageChange = (evento) => {
+    if (
+      evento > 0 &&
+      evento <= Math.ceil(totalCount / itemsLimit) &&
+      evento !== page
+    ) {
+      setPage(evento);
+      fetchPayments(evento);
+    }
+  };
+
+  const sortHandler = (property) => (event) => {
+    const isAsc = orderBy === property && order === "asc";
+    setOrder(isAsc ? "desc" : "asc");
+    setOrderBy(property);
+  };
+
+  useEffect(() => {
+    order && orderBy && fetchPayments(1);
+  }, [order, orderBy]);
+
   return (
     <PageBody
       title={t("global:myPayments:pageTitle")}
       action={renderActionButton()}
     >
       <Box className="pageContent">
+        <FilterBar handleFilters={handleSearchFilter} />
         <TableContainer>
           <Table
             className="payments-table"
@@ -151,22 +245,24 @@ const PaymentsPage = () => {
           >
             <TableHead>
               <TableRow>
-                <TableCell>{t("myPayments:usernameLabel")}</TableCell>
-                <TableCell align="right">
-                  {t("global:myPayments:titleLabel")}
-                </TableCell>
-                <TableCell align="right">
-                  {t("global:myPayments:dateLabel")}
-                </TableCell>
-                <TableCell align="right">
-                  {t("global:myPayments:valueLabel")}
-                </TableCell>
-                <TableCell align="right">
-                  {t("global:myPayments:paidLabel")}
-                </TableCell>
-                <TableCell align="right">
-                  {t("global:myPayments:actionsLabel")}
-                </TableCell>
+                {paymentsTableHeader.map((header, i) => (
+                  <TableCell
+                    key={i}
+                    sortDirection={orderBy === header.id ? order : false}
+                    align={header.align}
+                  >
+                    {header.sortable && (
+                      <TableSortLabel
+                        active={orderBy === header.id}
+                        direction={orderBy === header.id ? order : "asc"}
+                        onClick={sortHandler(header.id)}
+                      >
+                        {header.title}
+                      </TableSortLabel>
+                    )}
+                    {!header.sortable && header.title}
+                  </TableCell>
+                ))}
               </TableRow>
             </TableHead>
             <TableBody>
@@ -200,6 +296,13 @@ const PaymentsPage = () => {
               ))}
             </TableBody>
           </Table>
+          <TablePagination
+            className="pagination-bar"
+            totalCount={totalCount}
+            currentPage={page}
+            pageSize={itemsLimit}
+            onPageChange={handlePageChange}
+          />
         </TableContainer>
       </Box>
 

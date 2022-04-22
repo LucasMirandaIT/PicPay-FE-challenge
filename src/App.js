@@ -6,6 +6,8 @@ import { useState } from "react";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import AuthContext from "./contexts/AuthContext";
 import menuItems from "./utils/Menu";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [authenticatedUser, setAuthenticatedUser] = useState(null);
@@ -27,6 +29,7 @@ function App() {
             <Route path="/login" element={<Login />} exact />
           </Routes>
         </AuthContext.Provider>
+        <ToastContainer />
       </div>
     </Router>
   );

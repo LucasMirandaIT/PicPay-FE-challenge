@@ -15,6 +15,10 @@
     "paidLabel": "Pago",
     "actionsLabel": "Ações"
   },
+  "filters": {
+    "startDateLabel": "Data Inicial",
+    "endDateLabel": "Data Final"
+  },
   "cancelButtonLabel": "Cancelar",
   "confirmButtonLabel": "Confirmar",
   "saveButtonLabel": "Salvar",

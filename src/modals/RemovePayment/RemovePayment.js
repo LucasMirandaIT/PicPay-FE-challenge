@@ -6,6 +6,8 @@ import moment from "moment";
 import "./RemovePayment.css";
 import { useTranslation } from "react-i18next";
 
+import { toast } from "react-toastify";
+
 const RemovePayment = ({ data, handleClose }) => {
   const [values, setValues] = useState({
     user: "",
@@ -33,17 +35,26 @@ const RemovePayment = ({ data, handleClose }) => {
       .then((res) => {
         handleClose("remove");
       })
-      .catch((err) => console.error("Delete ERROR ::: ", err));
+      .catch((err) => {
+        toast(err);
+      });
   };
 
   return (
     <section className="modal-body">
-      <h3 className="title">{t('global:removePaymentPageTitle')}</h3>
+      <h3 className="title">{t("global:removePaymentPageTitle")}</h3>
 
       <section className="payment-data">
-        <p>{t('global:myPayments:usernameLabel')}: {values.user} </p>
-        <p>{t('global:myPayments:dateLabel')}: {moment(values.date).format("DD/MM/yyyy")}</p>
-        <p>{t('global:myPayments:valueLabel')}: {values.value}</p>
+        <p>
+          {t("global:myPayments:usernameLabel")}: {values.user}{" "}
+        </p>
+        <p>
+          {t("global:myPayments:dateLabel")}:{" "}
+          {moment(values.date).format("DD/MM/yyyy")}
+        </p>
+        <p>
+          {t("global:myPayments:valueLabel")}: {values.value}
+        </p>
       </section>
 
       <section className="footer">
@@ -52,14 +63,14 @@ const RemovePayment = ({ data, handleClose }) => {
           className="cancel-button"
           onClick={handleClose}
         >
-          {t('global:cancelButtonLabel')}
+          {t("global:cancelButtonLabel")}
         </Button>
         <Button
           variant="contained"
           className="confirm-button"
           onClick={removePayment}
         >
-         {t('global:saveButtonLabel')}
+          {t("global:saveButtonLabel")}
         </Button>
       </section>
     </section>

@@ -16,6 +16,8 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import "./AddPayment.css";
 import { useTranslation } from "react-i18next";
 
+import { toast } from "react-toastify";
+
 const AddPayment = ({ data, handleClose, options }) => {
   const [values, setValues] = useState({
     username: "",
@@ -44,7 +46,7 @@ const AddPayment = ({ data, handleClose, options }) => {
           handleClose("update");
         })
         .catch((err) => {
-          console.error("Error ::: ", err);
+          toast(err);
         });
     } else {
       axios
@@ -53,7 +55,7 @@ const AddPayment = ({ data, handleClose, options }) => {
           handleClose("create");
         })
         .catch((err) => {
-          console.error("Error ::: ", err);
+          toast(err);
         });
     }
   };

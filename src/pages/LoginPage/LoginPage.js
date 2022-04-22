@@ -64,7 +64,6 @@ const Login = (props) => {
             data-testid="email-input"
             label={t("global:emailLabel")}
             value={email}
-            defaultValue={email}
             onChange={({ target: { value } }) => setEmail(value)}
             variant="outlined"
           />
